@@ -1,0 +1,51 @@
+body { 
+    padding: 20px; 
+}
+h1 { 
+    text-align: center; 
+    margin-bottom: 20px; 
+}
+
+/* Fixed position for Profile/Login button */
+.auth-buttons {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+/* Search Bar */
+.search-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* File Container */
+.file-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+.file-item {
+    width: 200px;
+    text-align: center;
+}
+
+/* Image styling */
+.book-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* Centered upload form */
+.upload-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 400px;
+    margin: 0 auto;
+}

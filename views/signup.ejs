@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/style.css"> <!-- External CSS -->
+</head>
+<body>
+
+    <%- include("partials/header") %> <!-- Include Header -->
+
+    <div class="auth-container">
+        <h2 class="text-center">Sign Up</h2>
+
+        <% if (error) { %>
+            <div class="alert alert-danger text-center"><%= error %></div>
+        <% } %>
+
+        <% if (success) { %>
+            <div class="alert alert-success text-center"><%= success %></div>
+        <% } %>
+
+        <form action="/signup" method="POST">
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" id="username" name="username" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" id="password" name="password" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+        </form>
+
+        <p class="text-center mt-3">Already have an account? <a href="/login">Login</a></p>
+    </div>
+
+</body>
+</html>

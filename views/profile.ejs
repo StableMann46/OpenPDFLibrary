@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Settings</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/style.css"> <!-- External CSS -->
+</head>
+<body>
+
+  <!-- Include Header -->
+  <%- include("partials/header") %>
+
+  <div class="container mt-5">
+    <h1 class="text-center">Profile Settings</h1>
+    
+    <!-- Profile Picture Upload Section -->
+    <div class="text-center mb-4">
+      <!-- If a user profile picture is available, display it; otherwise, display a default -->
+      <img src="/uploads/<%= profilePic || 'default.jpg' %>" alt="Profile Picture" class="rounded-circle" width="120">
+      <form action="/update-profile-pic" method="POST" enctype="multipart/form-data" class="mt-2">
+        <input type="file" name="profilePic" class="form-control" required>
+        <button type="submit" class="btn btn-primary mt-2">Upload New Picture</button>
+      </form>
+    </div>
+
+    <!-- Email Update Section -->
+    <div class="card p-4 mt-4">
+      <h3>Update Email</h3>
+      <form action="/update-email" method="POST">
+        <div class="mb-3">
+          <label class="form-label">New Email</label>
+          <input type="email" name="newEmail" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Update Email</button>
+      </form>
+    </div>
+
+    <!-- Change Username Section -->
+    <div class="card p-4 mt-4">
+      <h3>Change Username</h3>
+      <form action="/update-username" method="POST">
+        <div class="mb-3">
+          <label class="form-label">Current Username</label>
+          <input type="text" class="form-control" value="<%= username %>" disabled>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">New Username</label>
+          <input type="text" name="newUsername" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Update Username</button>
+      </form>
+    </div>
+
+    <!-- Change Password Section -->
+    <div class="card p-4 mt-4">
+      <h3>Change Password</h3>
+      <form action="/update-password" method="POST">
+        <div class="mb-3">
+          <label class="form-label">Current Password</label>
+          <input type="password" name="currentPassword" class="form-control" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">New Password</label>
+          <input type="password" name="newPassword" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-warning w-100">Update Password</button>
+      </form>
+    </div>
+
+    <div class="text-center mt-4">
+      <a href="/logout" class="btn btn-danger w-100">Logout</a>
+      <a href="/home" class="btn btn-secondary w-100 mt-2">Back to Home</a>
+    </div>
+  </div>
+
+  <!-- Include Footer -->
+  <%- include("partials/footer") %>
+
+</body>
+</html>

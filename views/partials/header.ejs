@@ -1,0 +1,33 @@
+<!-- Navigation: Show Profile Dropdown if Logged in, Otherwise Show Login & Signup Buttons -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light px-4">
+    <a class="navbar-brand" href="/">📚 Open PDF Library</a>
+    <div class="ms-auto">
+        <% if (username) { %>
+            <!-- Profile Dropdown with Hover Effect -->
+            <div class="dropdown">
+                <button class="btn btn-outline-dark dropdown-toggle" type="button" id="profileDropdown">
+                    <%= username %>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" id="dropdownMenu">
+                    <li><a class="dropdown-item" href="/profile">👤 Profile</a></li>
+                    <li><a class="dropdown-item text-danger" href="/logout">🚪 Logout</a></li>
+                </ul>
+            </div>
+        <% } else { %>
+            <a href="/login" class="btn btn-primary me-2">Login</a>
+            <a href="/signup" class="btn btn-outline-primary">Sign Up</a>
+        <% } %>
+    </div>
+</nav>
+<script>
+    const dropdown = document.getElementById("profileDropdown");
+    const menu = document.getElementById("dropdownMenu");
+    if (dropdown) {
+        dropdown.addEventListener("mouseenter", () => {
+            menu.classList.add("show");
+        });
+        menu.addEventListener("mouseleave", () => {
+            menu.classList.remove("show");
+        });
+    }
+</script>
